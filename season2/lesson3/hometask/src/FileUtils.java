@@ -31,9 +31,16 @@ public class FileUtils {
         }
     }
 
-    // test
-    /* TODO: Здесь нужно написать документацию. Данная функция создает файлы с именами, которые были переданы в массиве
-     *  и возвращает true если все файлы были успешно созданы и false если хотя бы один файл был создан не успешно */
+    // TODO: Вопрос к мастеру, уместно ли тут использовать present perfect?
+    /**
+     * Create files with names from array {@code fileNames}
+     *
+     * @param fileNames array of file's names, which need create
+     * @return {@code true} if files have been to create successfully,
+     *         {@code false} if at least one file hasn't been to create
+     * @throws NullPointerException if at least one file have had value {@code null}
+     * @see FileUtils#createFile(String)
+    */
     public static boolean createFiles(String[] fileNames) {
         boolean allFilesWereCreated = true;
         for (String fileName : fileNames) {
@@ -47,7 +54,12 @@ public class FileUtils {
         return allFilesWereCreated;
     }
 
-    // TODO: Здесь нужно написать документацию. Данная функция возвращает содержимое файла c переданным именем
+    /**
+     * Method read file by name {@code fileName} and return it contents
+     *
+     * @param fileName file name of returned content
+     * @return file's content
+     */
     public static String readFile(String fileName) {
         File file = new File(fileName);
         if (!file.exists()) {
@@ -70,8 +82,15 @@ public class FileUtils {
         return fileText.toString();
     }
 
-    /* todo здесь нужно написать документацию. Данная функция записывает файл с переданным именем заданный текст.
-    *    Если в файле что-то есть, то его содержимое перезаписывается переданным текстом */
+
+    /**
+     * Method create new file by name {@code fileName} with context {@code text}.
+     * File will be overwritten if it exists.
+     *
+     * @param fileName file name to creates
+     * @param text file's context
+     * @return {@code true} if file has been create, {@code false} if file hasn't been create
+     */
     public static boolean writeFile(String fileName, String text) {
         createFile(fileName);
 
@@ -86,8 +105,14 @@ public class FileUtils {
         return true;
     }
 
-    /* TODO: здесь нужно написать документацию. Данная функция записывает файл с переданным именем заданный текст.
-     *    Если в файле что-то есть, то переданный текст записывается в конец файла, оставляя содержимое файла нетронутым */
+    /**
+     * Method add text {@code text} in file by name {@code fileName}.
+     * If file exists, method add text to end file. If file does exist, method create new file.
+     * @param fileName file name
+     * @param text file's text
+     * @return {@code true} operation completed successfully, {@code false} operation failed
+     * @see FileUtils#writeFile(String, String)
+     */
     public static boolean appendFile(String fileName, String text) {
         String fileText = readFile(fileName);
         if (fileText == null) {

@@ -56,11 +56,13 @@ public class ConsoleApp {
                             break;
 
                         case "read":
-                            // TODO: реализуйте пожалуйста сами. Нужно воспользоваться классом FileUtils
+                            text = line.substring(data[0].length() + 1);
+                            System.out.println(FileUtils.readFile(text));
                             break;
 
                         case "touch":
-                            // TODO: реализуйте пожалуйста сами. Нужно воспользоваться классом FileUtils
+                            text = line.substring(data[0].length() + 1);
+                            FileUtils.createFile(text);
                             break;
 
                         // Напечатать справку по консольному приложению
